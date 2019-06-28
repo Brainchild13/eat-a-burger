@@ -7,8 +7,7 @@ VALUES
 INSERT INTO burgers
     (burger_name, devoured)
 VALUES
-    ("Vegetarian"
-Burger, false);
+    ("Vegetarian", false);
 
 INSERT INTO burgers
     (burger_name, devoured)
