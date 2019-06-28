@@ -1,0 +1,26 @@
+{
+  "name": "eat-a-burger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "handlebars": "^4.1.2",
+    "express": "^4.17.1",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brainchild13/eat-a-burger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brainchild13/eat-a-burger/issues"
+  },
+  "homepage": "https://github.com/Brainchild13/eat-a-burger#readme"
+}
