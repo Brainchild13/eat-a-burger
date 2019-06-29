@@ -4,11 +4,7 @@ $(document).ready(function() {
   // Our new burgers will go inside the burgerContainer
   var $burgerContainer = $(".burger-container");
   // Adding event listeners for deleting, editing, and adding burgers
-  $(document).on("click", "button.delete", deleteBurger);
-  $(document).on("click", "button.complete", toggleComplete);
-  $(document).on("click", ".burger-item", editBurger);
-  $(document).on("keyup", ".burger-item", finishEdit);
-  $(document).on("blur", ".burger-item", cancelEdit);
+  $(document).on("click", "button.delete", devourBurger);
   $(document).on("submit", "#burger-form", insertBurger);
 
   // Our initial burgers array
@@ -35,36 +31,9 @@ $(document).ready(function() {
     });
   }
 
-  // This function handles showing the input box for a user to edit a burger
-  function editBurger() {
-    var currentBurger = $(this).data("burger");
-    $(this)
-      .children()
-      .hide();
-    $(this)
-      .children("input.edit")
-      .val(currentBurger.text);
-    $(this)
-      .children("input.edit")
-      .show();
-    $(this)
-      .children("input.edit")
-      .focus();
-  }
-
-  // Toggles complete status
-  function toggleComplete(event) {
-    event.stopPropagation();
-    var burger = $(this)
-      .parent()
-      .data("burger");
-    burger.complete = !burger.complete;
-    updateBurger(burger);
-  }
-
   // This function starts updating a burger in the database if a user hits the "Enter Key"
   // While in edit mode
-  function finishEdit(event) {
+  function devourBurger(event) {
     var updatedBurger = $(this).data("burger");
     if (event.which === 13) {
       updatedBurger.text = $(this)
@@ -85,26 +54,6 @@ $(document).ready(function() {
     }).then(getBurger);
   }
 
-  // This function is called whenever a burger item is in edit mode and loses focus
-  // This cancels any edits being made
-  function cancelEdit() {
-    var currentBurger = $(this).data("burger");
-    if (currentBurger) {
-      $(this)
-        .children()
-        .hide();
-      $(this)
-        .children("input.edit")
-        .val(currentBurger.text);
-      $(this)
-        .children("span")
-        .show();
-      $(this)
-        .children("button")
-        .show();
-    }
-  }
-
   // This function constructs a burger-item row
   function createNewRow(burger) {
     var $newInputRow = $(
@@ -120,7 +69,6 @@ $(document).ready(function() {
       ].join("")
     );
 
-    $newInputRow.find("button.delete").data("id", burger.id);
     $newInputRow.find("input.edit").css("display", "none");
     $newInputRow.data("burger", burger);
     if (burger.complete) {

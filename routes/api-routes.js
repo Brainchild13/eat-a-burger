@@ -27,8 +27,8 @@ module.exports = function(app) {
     // insert into our table. In this case we just we pass in an object with a text
     // and complete property (req.body)
     db.Burger.create({
-      text: req.body.text,
-      complete: req.body.complete
+      burgers_name: req.body.burgers_name,
+      devoured: req.body.devoured
     }).then(function(dbBurger) {
       // We have access to the new burger as an argument inside of the callback function
       res.json(dbBurger);
@@ -41,8 +41,8 @@ module.exports = function(app) {
     // we use where to describe which objects we want to update
     db.Burger.update(
       {
-        text: req.body.text,
-        complete: req.body.complete
+        burgers_name: req.body.burgers_name,
+        devoured: req.body.devoured
       },
       {
         where: {
