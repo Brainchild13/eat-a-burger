@@ -5,7 +5,7 @@
 // Dependencies
 // =============================================================
 
-// Requiring our Todo model
+// Requiring our Burger model
 var db = require("../models");
 
 // Routes
@@ -30,11 +30,28 @@ module.exports = function(app) {
       text: req.body.text,
       complete: req.body.complete
     }).then(function(dbBurger) {
-      // We have access to the new todo as an argument inside of the callback function
+      // We have access to the new burger as an argument inside of the callback function
       res.json(dbBurger);
     });
   });
 
-  // PUT route for updating todos. We can get the updated todo from req.body
-  app.put("/api/burgers", function(req, res) {});
+  // PUT route for updating burgers. We can get the updated burger data from req.body
+  app.put("/api/burgers", function(req, res) {
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Burger.update(
+      {
+        text: req.body.text,
+        complete: req.body.complete
+      },
+      {
+        where: {
+          id: req.body.id
+        }
+      }
+    ).then(function(dbBurger) {
+      res.json(dbBurger);
+    });
+  });
 };
+todo;
