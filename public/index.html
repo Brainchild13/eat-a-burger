@@ -20,10 +20,28 @@
   <body>
     <div class="container">
       <div class="row">
+        <h1>Task Saver</h1>
+        <br />
+
+        <h3>Save the tasks you need to get to later</h3>
+
+        <div class="col">
+          <ul>
+            {{#each burgers}}
+            <li>
+              <p>ID: {{ this.id }}</p>
+              <p>Burger Name: {{ this.burger_name }}</p>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+
+        <div class="col">.col</div>
+
         <div class="col-md-6 offset-md-3">
           <ul class="list-group burger-list">
             <li class="list-group-item new-item">
-              <form id="burger-form">
+              <form id="burger-form" action="/" method="POST">
                 <div class="container">
                   <div class="row">
                     <div class="col-10">
